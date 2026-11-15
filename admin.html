@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>إدارة متجر رشا</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=Tajawal:wght@400;500;700&display=swap">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="stylesheet" href="style.css">
+<style>
+.alist{display:grid;gap:10px;padding-bottom:40px}
+.arow{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:8px}
+.arow img{width:64px;height:64px;object-fit:cover;border-radius:10px}
+.arow .t{min-width:0}.arow .t b{display:block;overflow-wrap:anywhere}
+.arow .card-tools{justify-content:flex-end}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:16px;margin-block:20px}
+</style>
+</head>
+<body>
+<div class="adminbar"><div class="wrap"><strong>إدارة متجر رشا</strong>
+  <div class="actions" id="bar" hidden><button class="btn btn-acc" id="b-new">+ منتج جديد</button><button class="btn btn-ghost" id="b-set">الإعدادات</button><a class="btn btn-ghost" href="./" target="_blank" rel="noopener">شوفي المتجر</a></div></div></div>
+<div class="wrap" id="main"></div>
+<script>
+(function(){
+const $=(s,el=document)=>el.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const CATS=[["acc","إكسسوارات"],["care","عناية"]];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}},del:k=>{try{localStorage.removeItem(k)}catch(e){}}};
+const host=location.hostname.endsWith(".github.io")?location.hostname.split(".")[0]:"";
+const seg=location.pathname.split("/").filter(Boolean)[0]||"";
+let cfg={token:ls.get("rs_token")||"",owner:ls.get("rs_owner")||host,repo:ls.get("rs_repo")||(seg&&!seg.endsWith(".html")?seg:"rasha-shop")};
+let S=null, sha=null;
+const enc=s=>btoa(unescape(encodeURIComponent(s))), dec=b=>decodeURIComponent(escape(atob(b.replace(/\n/g,""))));
+function toast(t){const d=document.createElement("div");d.className="toast";d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),3200)}
+async function gh(path,opt={}){
+  const r=await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${path}`,{...opt,headers:{"Authorization":"Bearer "+cfg.token,"Accept":"application/vnd.github+json",...(opt.body?{"Content-Type":"application/json"}:{})}});
+  if(!r.ok){const e=new Error("gh "+r.status);e.status=r.status;throw e} return r.json();
+}
+function login(msg){
+  $("#bar").hidden=true;
+  $("#main").innerHTML=`<form class="edit box" id="lf"><h2>دخول الإدارة</h2>
+    <p class="note">هيدي الصفحة إلك بس. الرمز بينحفظ على تلفونك، وما بيشوفه حدا.</p>
+    <div class="fld"><label for="l-token">رمز الدخول (GitHub token)</label><input id="l-token" dir="ltr" autocomplete="off" value="${esc(cfg.token)}"></div>
+    <div class="row2"><div class="fld"><label for="l-owner">اسم الحساب</label><input id="l-owner" dir="ltr" value="${esc(cfg.owner)}"></div>
+    <div class="fld"><label for="l-repo">اسم المشروع</label><input id="l-repo" dir="ltr" value="${esc(cfg.repo)}"></div></div>
+    <div class="actions"><button class="btn btn-acc" type="submit">ادخلي</button></div><div class="note" id="l-msg">${esc(msg||"")}</div></form>`;
+  $("#lf").onsubmit=e=>{e.preventDefault();cfg.token=$("#l-token").value.trim();cfg.owner=$("#l-owner").value.trim();cfg.repo=$("#l-repo").value.trim();
+    ls.set("rs_token",cfg.token);ls.set("rs_owner",cfg.owner);ls.set("rs_repo",cfg.repo);load()};
+}
+async function load(){
+  if(!cfg.token||!cfg.owner) return login();
+  $("#main").innerHTML=`<p class="note" style="padding:30px 0">عم يحمّل…</p>`;
+  try{const f=await gh("products.json?ref=main&t="+Date.now());sha=f.sha;S=JSON.parse(dec(f.content));S.settings=S.settings||{};S.products=S.products||[];$("#bar").hidden=false;list()}
+  catch(e){login(e.status===401?"الرمز غلط أو انتهى، حطي رمز جديد.":e.status===404?"ما لقينا المشروع. تأكدي من اسم الحساب واسم المشروع.":"ما قدرنا نوصل، تأكدي من الإنترنت وجرّبي كمان مرة.")}
+}
+function list(){
+  $("#main").innerHTML=`<div class="alist" style="padding-top:18px">${S.products.length?S.products.map(p=>`<div class="arow">
+    ${p.images&&p.images[0]?`<img src="${esc(p.images[0])}" alt="">`:`<span></span>`}
+    <div class="t"><b>${esc(p.name)}</b><span class="price">${esc(p.price)}$</span> ${p.soldOut?`<span class="note">· نفدت الكمية</span>`:""}</div>
+    <div class="card-tools"><button data-edit="${esc(p.id)}">تعديل</button><button data-sold="${esc(p.id)}">${p.soldOut?"رجّعيه متوفّر":"نفدت"}</button></div></div>`).join(""):`<div class="empty">ما في منتجات بعد. كبسي «منتج جديد» لتضيفي أول واحد.</div>`}</div>`;
+}
+let saving=false;
+async function save(msg,newImgs){
+  if(saving) return; saving=true; toast("عم يحفظ…");
+  try{
+    if(newImgs) for(const [path,data] of newImgs) await gh(path,{method:"PUT",body:JSON.stringify({message:"صورة منتج",content:data.split(",")[1],branch:"main"})});
+    const r=await gh("products.json",{method:"PUT",body:JSON.stringify({message:msg,content:enc(JSON.stringify(S,null,1)),sha,branch:"main"})});
+    sha=r.content.sha; toast(msg+" ✓ المتجر بيتحدّث خلال دقيقة"); list();
+  }catch(e){toast(e.status===409?"في تعديل أحدث، عم نحدّث الصفحة":"ما انحفظ، جرّبي كمان مرة");if(e.status===409)load()}
+  saving=false;
+}
+function resize(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const m=1100,s=Math.min(1,m/Math.max(im.width,im.height));const c=document.createElement("canvas");c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);c.getContext("2d").drawImage(im,0,0,c.width,c.height);res(c.toDataURL("image/jpeg",.82))};im.onerror=rej;im.src=r.result};r.onerror=rej;r.readAsDataURL(file)})}
+function editForm(id){
+  const p=id?S.products.find(x=>x.id===id):null;
+  const d=p?JSON.parse(JSON.stringify(p)):{id:"p"+Date.now().toString(36),code:String(100+S.products.length+1),name:"",price:"",cat:"acc",desc:"",tag:"",images:[],soldOut:false};
+  const fresh=new Map();
+  const sh=document.createElement("div"); sh.className="sheet";
+  sh.innerHTML=`<div class="panel" style="display:block"><form class="edit" novalidate><h2>${p?"تعديل المنتج":"منتج جديد"}</h2>
+    <div class="fld"><label>الصور (أول صورة هي الغلاف)</label><div class="imgs" id="imgs"></div></div>
+    <div class="fld"><label for="f-name">اسم المنتج</label><input id="f-name" value="${esc(d.name)}" placeholder="مثلاً: سنسال قلب ستانلس ذهبي"></div>
+    <div class="row2"><div class="fld"><label for="f-price">السعر بالدولار</label><input id="f-price" inputmode="decimal" value="${esc(d.price)}" placeholder="7"></div>
+    <div class="fld"><label for="f-cat">القسم</label><select id="f-cat">${CATS.map(([k,l])=>`<option value="${k}" ${d.cat===k?"selected":""}>${l}</option>`).join("")}</select></div></div>
+    <div class="row2"><div class="fld"><label for="f-code">رقم المنتج</label><input id="f-code" value="${esc(d.code||"")}"></div>
+    <div class="fld"><label for="f-tag">شارة صغيرة (اختياري)</label><input id="f-tag" value="${esc(d.tag||"")}" placeholder="جديد / الأكتر طلب"></div></div>
+    <div class="fld"><label for="f-desc">الوصف</label><textarea id="f-desc" rows="4" placeholder="المادة، القياس، اللون…">${esc(d.desc)}</textarea></div>
+    <div class="actions"><button class="btn btn-acc" type="submit">احفظ</button><button class="btn btn-ghost" type="button" data-x>إلغاء</button>${p?`<button class="btn btn-danger" type="button" data-del>احذف المنتج</button>`:""}</div>
+    <div class="note" id="f-msg"></div></form></div>`;
+  document.body.appendChild(sh);
+  const src=u=>fresh.get(u)||u;
+  const draw=()=>{$("#imgs",sh).innerHTML=d.images.map((u,i)=>`<figure><img src="${esc(src(u))}" alt="صورة ${i+1}"><button type="button" class="x" data-rm="${i}" aria-label="شيلي الصورة">×</button>${i?`<button type="button" class="mv" data-first="${i}">غلاف</button>`:`<span class="cover">الغلاف</span>`}</figure>`).join("")+`<label class="add-img">+ زيدي صور<input type="file" accept="image/*" multiple hidden id="f-files"></label>`;
+    $("#f-files",sh).onchange=async e=>{$("#f-msg",sh).textContent="عم يجهّز الصور…";for(const f of [...e.target.files]){try{const u=await resize(f);const path=`images/${d.id}-${Date.now().toString(36)}${Math.random().toString(36).slice(2,5)}.jpg`;fresh.set(path,u);d.images.push(path)}catch(err){}}$("#f-msg",sh).textContent="";draw()}};
+  draw();
+  sh.addEventListener("click",e=>{const t=e.target;
+    if(t.dataset.rm!=null){d.images.splice(+t.dataset.rm,1);draw()}
+    if(t.dataset.first!=null){const [u]=d.images.splice(+t.dataset.first,1);d.images.unshift(u);draw()}
+    if(t.hasAttribute("data-x")||t===sh) sh.remove();
+    if(t.hasAttribute("data-del")){if(t.dataset.sure){S.products=S.products.filter(x=>x.id!==d.id);sh.remove();save("انحذف المنتج")}else{t.dataset.sure=1;t.textContent="أكيد؟ كبسي كمان مرة"}}
+  });
+  $("form",sh).onsubmit=e=>{e.preventDefault();
+    d.name=$("#f-name",sh).value.trim();d.price=parseFloat(String($("#f-price",sh).value).replace(",","."));d.cat=$("#f-cat",sh).value;d.code=$("#f-code",sh).value.trim();d.tag=$("#f-tag",sh).value.trim();d.desc=$("#f-desc",sh).value.trim();
+    if(!d.name) return $("#f-msg",sh).textContent="اكتبي اسم المنتج.";
+    if(!(d.price>=0)) return $("#f-msg",sh).textContent="اكتبي السعر بالأرقام، مثلاً 7 أو 6.5";
+    if(!d.images.length) return $("#f-msg",sh).textContent="زيدي صورة وحدة عالأقل.";
+    const i=S.products.findIndex(x=>x.id===d.id); if(i>=0)S.products[i]=d; else S.products.unshift(d);
+    const up=d.images.filter(u=>fresh.has(u)).map(u=>[u,fresh.get(u)]);
+    sh.remove(); save(i>=0?"انحفظ التعديل":"انضاف المنتج",up);
+  };
+}
+function settingsForm(){
+  const sh=document.createElement("div"); sh.className="sheet";
+  sh.innerHTML=`<div class="panel" style="display:block"><form class="edit"><h2>إعدادات المتجر</h2>
+    <div class="fld"><label for="s-phone">رقم الواتساب مع مفتاح البلد</label><input id="s-phone" inputmode="tel" dir="ltr" value="${esc(S.settings.phone||"")}" placeholder="96170123456"></div>
+    <div class="fld"><label for="s-name">اسم المتجر</label><input id="s-name" value="${esc(S.settings.name||"رشا")}"></div>
+    <div class="fld"><label for="s-tag">جملة تحت الاسم</label><input id="s-tag" value="${esc(S.settings.tagline||"")}"></div>
+    <div class="actions"><button class="btn btn-acc" type="submit">احفظ</button><button class="btn btn-ghost" type="button" data-x>إلغاء</button><button class="btn btn-danger" type="button" data-out>اطلعي من الإدارة</button></div></form></div>`;
+  document.body.appendChild(sh);
+  sh.addEventListener("click",e=>{if(e.target.hasAttribute("data-x")||e.target===sh)sh.remove();if(e.target.hasAttribute("data-out")){ls.del("rs_token");cfg.token="";sh.remove();login()}});
+  $("form",sh).onsubmit=e=>{e.preventDefault();S.settings.phone=$("#s-phone",sh).value.replace(/\D/g,"");S.settings.name=$("#s-name",sh).value.trim()||"رشا";S.settings.tagline=$("#s-tag",sh).value.trim();sh.remove();save("انحفظت الإعدادات")};
+}
+document.addEventListener("click",e=>{const t=e.target.closest("[data-edit],[data-sold]");if(!t)return;
+  if(t.dataset.edit) editForm(t.dataset.edit);
+  if(t.dataset.sold){const p=S.products.find(x=>x.id===t.dataset.sold);p.soldOut=!p.soldOut;save(p.soldOut?"تعلّم: نفدت الكمية":"رجع متوفّر")}});
+$("#b-new").onclick=()=>editForm(null); $("#b-set").onclick=settingsForm;
+load();
+})();
+</script>
+</body>
+</html>

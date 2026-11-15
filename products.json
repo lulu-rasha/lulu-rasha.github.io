@@ -1,0 +1,39 @@
+{
+ "settings": {
+  "phone": "",
+  "name": "رشا",
+  "tagline": "إكسسوارات ستانلس ومنتجات عناية أصلية"
+ },
+ "products": [
+  {
+   "id": "p-heart",
+   "code": "101",
+   "name": "سنسال قلب ستانلس ذهبي",
+   "price": 7,
+   "cat": "acc",
+   "tag": "تجريبي",
+   "desc": "ستانلس ستيل 316L، ما بيصدّي ولا بيسوّد.\nطول السلسلة 45 سم مع تطويلة 5 سم.\nلونه ذهبي، وبيجي بعلبة هدية.",
+   "images": [
+    "images/necklace-1.jpg",
+    "images/necklace-2.jpg",
+    "images/necklace-3.jpg"
+   ],
+   "soldOut": false
+  },
+  {
+   "id": "p-pearl",
+   "code": "102",
+   "name": "إسوارة لؤلؤ ستانلس",
+   "price": 5,
+   "cat": "acc",
+   "tag": "تجريبي",
+   "desc": "خرز لؤلؤ مع شك ستانلس 316L.\nمطّاطة، بتركب على أغلب القياسات.\nخفيفة ومناسبة للطلعات والهدايا.",
+   "images": [
+    "images/bracelet-1.jpg",
+    "images/bracelet-2.jpg",
+    "images/bracelet-3.jpg"
+   ],
+   "soldOut": false
+  }
+ ]
+}
