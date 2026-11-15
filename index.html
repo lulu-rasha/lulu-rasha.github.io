@@ -23,22 +23,36 @@ const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 const CATS=[["all","الكل"],["acc","إكسسوارات"],["care","عناية"]];
 let S={settings:{},products:[]}, cat="all";
 const WA='<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></svg>';
+const BAG='<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>';
 const phone=()=>String(S.settings.phone||"").replace(/\D/g,"");
-const money=p=>{const n=Number(p)||0;return (n%1?n.toFixed(2):String(n))+"$"};
-function waLink(p){const n=phone();if(!n)return "";
-  const msg=`مرحبا رشا 🌸\nبدي اطلب:\n• ${p.name}\n• السعر: ${money(p.price)}\n• رقم المنتج: ${p.code||p.id}\n\nممكن تفاصيل التوصيل؟`;
-  return "https://wa.me/"+n+"?text="+encodeURIComponent(msg)}
+const money=p=>{const n=Math.round((Number(p)||0)*100)/100;return (n%1?n.toFixed(2):String(n))+"$"};
+const deal=()=>({min:Number(S.settings.bundleMin)||2,pct:Number(S.settings.bundlePct)||0});
+let cart=[]; try{cart=JSON.parse(localStorage.getItem("rs_cart")||"[]")}catch(e){}
+const saveCart=()=>{try{localStorage.setItem("rs_cart",JSON.stringify(cart))}catch(e){};drawFab()};
+const pById=id=>S.products.find(x=>x.id===id);
+function totals(){let n=0,sub=0;cart=cart.filter(i=>pById(i.id));for(const i of cart){const p=pById(i.id);n+=i.q;sub+=i.q*(Number(p.price)||0)}
+  const d=deal(),off=d.pct&&n>=d.min?sub*d.pct/100:0;return {n,sub,off,total:sub-off}}
+function toast(t){const d=document.createElement("div");d.className="toast";d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),2400)}
+function waUrl(msg){const n=phone();return n?"https://wa.me/"+n+"?text="+encodeURIComponent(msg):""}
+function singleMsg(p,color){return `مرحبا رشا 🌸\nبدي اطلب:\n• ${p.name}${color?` (${color})`:""}\n• السعر: ${money(p.price)}\n• رقم المنتج: ${p.code||p.id}\n\nممكن تفاصيل التوصيل؟`}
+function cartMsg(){const t=totals();let m="مرحبا رشا 🌸\nبدي اطلب:\n";
+  cart.forEach(i=>{const p=pById(i.id);m+=`• ${p.name}${i.c?` (${i.c})`:""} × ${i.q} = ${money(p.price*i.q)}\n`});
+  m+=`\nالمجموع: ${money(t.sub)}`;if(t.off)m+=`\nخصم ${deal().pct}%: -${money(t.off)}\nالمطلوب: ${money(t.total)}`;
+  return m+"\n\nممكن تفاصيل التوصيل؟"}
 function render(){
-  const list=S.products.filter(p=>cat==="all"||p.cat===cat), n=phone();
-  document.title=(S.settings.name||"رشا")==="رشا"?"متجر رشا":S.settings.name;
+  const list=S.products.filter(p=>cat==="all"||p.cat===cat), n=phone(), d=deal();
   $("#root").innerHTML=`<div class="wrap">
     <header class="top"><h1 class="mark">${esc(S.settings.name||"رشا")}</h1><div class="mark-latin">RASHA</div>
       <p class="tagline">${esc(S.settings.tagline||"")}</p>
-      <div class="facts"><span>توصيل لكل لبنان</span><span>الدفع عند الاستلام</span><span>${n?`واتساب <span class="num">+${esc(n)}</span>`:"الطلب عالواتساب"}</span></div></header>
+      <div class="facts"><span>توصيل لكل لبنان</span><span>الدفع عند الاستلام</span><span>${n?`واتساب <span class="num">+${esc(n)}</span>`:"الطلب عالواتساب"}</span></div>
+      ${d.pct?`<div class="deal">خدي ${d.min===2?"قطعتين":d.min+" قطع"} أو أكتر، وإلك خصم ${d.pct}% عالطلب كلّه</div>`:""}</header>
     <nav class="chips" aria-label="الأقسام">${CATS.map(([k,l])=>`<button class="chip" data-cat="${k}" aria-pressed="${cat===k}">${l}</button>`).join("")}</nav>
     <section class="grid">${list.length?list.map(card).join(""):`<div class="empty">قريباً منتجات جديدة بهالقسم 🌸</div>`}</section></div>
-    <footer><div class="wrap"><div>للطلب والاستفسار ${n?`عالواتساب: <span class="num">+${esc(n)}</span>`:"عالواتساب"}</div><div>كبسي على أي منتج وبتوصلك رسالة الطلب جاهزة</div></div></footer>`;
+    <footer><div class="wrap"><div>للطلب والاستفسار ${n?`عالواتساب: <span class="num">+${esc(n)}</span>`:"عالواتساب"}</div><div>اختاري القطع اللي بدك ياهن، وبتوصلك رسالة الطلب جاهزة</div></div></footer>
+    <button class="fab" id="fab" hidden aria-label="السلّة">${BAG}<span id="fabn"></span></button>`;
+  drawFab();
 }
+function drawFab(){const f=$("#fab");if(!f)return;const t=totals();f.hidden=!t.n;$("#fabn").textContent=t.n?`السلّة (${t.n}) · ${money(t.total)}`:""}
 function card(p){const img=(p.images||[])[0];
   return `<article class="card" style="cursor:pointer" data-open="${esc(p.id)}" tabindex="0" role="button" aria-label="${esc(p.name)}">
     <div class="ph">${img?`<img src="${esc(img)}" alt="${esc(p.name)}" loading="lazy">`:""}
@@ -46,27 +60,51 @@ function card(p){const img=(p.images||[])[0];
     ${(p.images||[]).length>1?`<span class="count">${p.images.length} صور</span>`:""}</div>
     <h3 class="c-name">${esc(p.name)}</h3>
     <div class="c-row"><span class="price">${money(p.price)}</span>${p.soldOut?"":`<span class="mini-wa">${WA}اطلبي</span>`}</div></article>`}
+function sheet(html){const sh=document.createElement("div");sh.className="sheet";sh.setAttribute("role","dialog");sh.setAttribute("aria-modal","true");sh.innerHTML=html;document.body.appendChild(sh);document.body.style.overflow="hidden";
+  const close=()=>{sh.remove();document.body.style.overflow="";document.removeEventListener("keydown",k);history.replaceState(null,"",location.pathname)};
+  const k=e=>{if(e.key==="Escape")close()};document.addEventListener("keydown",k);sh.addEventListener("click",e=>{if(e.target===sh||e.target.closest(".close"))close()});return [sh,close]}
 function openProduct(id){
-  const p=S.products.find(x=>x.id===id); if(!p) return;
-  const imgs=p.images||[], link=waLink(p);
-  const sh=document.createElement("div"); sh.className="sheet"; sh.setAttribute("role","dialog"); sh.setAttribute("aria-modal","true");
-  sh.innerHTML=`<div class="panel"><div class="gal"><button class="close" aria-label="سكّري">×</button>
+  const p=pById(id); if(!p) return;
+  const imgs=p.images||[], colors=(p.colors||[]).filter(Boolean); let color=colors[0]||"";
+  const [sh,close]=sheet(`<div class="panel"><div class="gal"><button class="close" aria-label="سكّري">×</button>
     <div style="position:relative"><div class="track">${imgs.map((u,i)=>`<img src="${esc(u)}" alt="${esc(p.name)} ${i+1}">`).join("")}</div>${imgs.length>1?`<div class="dots">${imgs.map((_,i)=>`<i class="${i?"":"on"}"></i>`).join("")}</div>`:""}</div>
     ${imgs.length>1?`<div class="thumbs">${imgs.map((u,i)=>`<button data-i="${i}" class="${i?"":"on"}" aria-label="صورة ${i+1}"><img src="${esc(u)}" alt=""></button>`).join("")}</div>`:""}</div>
     <div class="info"><h2>${esc(p.name)}</h2><div class="price">${money(p.price)}</div>
-    ${p.desc?`<p class="desc">${esc(p.desc)}</p>`:""}<div class="code">رقم المنتج: ${esc(p.code||p.id)}</div>
-    ${p.soldOut?`<div class="btn btn-ghost" aria-disabled="true">نفدت الكمية</div>`:link?`<a class="btn btn-wa" href="${link}" target="_blank" rel="noopener">${WA} اطلبي عالواتساب</a><div class="note">بتنفتحلك محادثة واتساب فيها رسالة الطلب جاهزة، بس ابعتيها.</div>`:`<div class="btn btn-ghost" aria-disabled="true">${WA} رقم الواتساب لسا ما انضاف</div>`}
-    </div></div>`;
-  document.body.appendChild(sh); document.body.style.overflow="hidden";
+    ${p.desc?`<p class="desc">${esc(p.desc)}</p>`:""}
+    ${colors.length?`<div class="fld"><label>اختاري اللون</label><div class="colors">${colors.map((c,i)=>`<button type="button" class="chip" data-color="${esc(c)}" aria-pressed="${i===0}">${esc(c)}</button>`).join("")}</div></div>`:""}
+    <div class="code">رقم المنتج: ${esc(p.code||p.id)}</div>
+    ${p.soldOut?`<div class="btn btn-ghost" aria-disabled="true">نفدت الكمية</div>`:phone()?`
+      <a class="btn btn-wa" id="buy1" href="#" target="_blank" rel="noopener">${WA} اطلبي هلق عالواتساب</a>
+      <button class="btn btn-ghost" id="add">${BAG} زيدي عالسلّة</button>
+      ${deal().pct?`<div class="note">خدي ${deal().min===2?"قطعتين":deal().min+" قطع"} أو أكتر وإلك خصم ${deal().pct}%. زيدي عالسلّة واختاري قطعة تانية.</div>`:""}`
+      :`<div class="btn btn-ghost" aria-disabled="true">${WA} رقم الواتساب لسا ما انضاف</div>`}
+    </div></div>`);
+  const buy=$("#buy1",sh); const setBuy=()=>{if(buy)buy.href=waUrl(singleMsg(p,color))}; setBuy();
+  sh.querySelectorAll("[data-color]").forEach(b=>b.onclick=()=>{color=b.dataset.color;sh.querySelectorAll("[data-color]").forEach(x=>x.setAttribute("aria-pressed",x===b));setBuy()});
+  const add=$("#add",sh); if(add) add.onclick=()=>{const it=cart.find(i=>i.id===p.id&&i.c===color);if(it)it.q++;else cart.push({id:p.id,c:color,q:1});saveCart();close();toast("انزادت عالسلّة ✓")};
   const track=$(".track",sh), dots=[...sh.querySelectorAll(".dots i")], th=[...sh.querySelectorAll(".thumbs button")];
   track.addEventListener("scroll",()=>{const i=Math.round(track.scrollLeft/track.clientWidth);dots.forEach((d,k)=>d.classList.toggle("on",k===i));th.forEach((d,k)=>d.classList.toggle("on",k===i))},{passive:true});
   th.forEach(b=>b.onclick=()=>track.scrollTo({left:track.clientWidth*+b.dataset.i,behavior:"smooth"}));
-  const close=()=>{sh.remove();document.body.style.overflow="";document.removeEventListener("keydown",k);history.replaceState(null,"",location.pathname)};
-  const k=e=>{if(e.key==="Escape")close()};
-  document.addEventListener("keydown",k); $(".close",sh).onclick=close; sh.addEventListener("click",e=>{if(e.target===sh)close()});
   history.replaceState(null,"","#"+p.id);
 }
-document.addEventListener("click",e=>{const t=e.target.closest("[data-cat],[data-open]");if(!t)return;
+function openCart(){
+  const draw=()=>{const t=totals(),d=deal();
+    return `<div class="panel" style="display:block"><div class="info" style="padding-top:22px"><button class="close" style="position:static;justify-self:end" aria-label="سكّري">×</button>
+    <h2>سلّتك</h2>
+    ${cart.length?cart.map((i,k)=>{const p=pById(i.id);return `<div class="crow"><img src="${esc((p.images||[])[0]||"")}" alt=""><div class="t"><b>${esc(p.name)}</b>${i.c?`<span class="note">${esc(i.c)}</span>`:""}<span class="price">${money(p.price*i.q)}</span></div>
+      <div class="qty"><button data-dec="${k}" aria-label="نقّصي">−</button><span>${i.q}</span><button data-inc="${k}" aria-label="زيدي">+</button></div></div>`}).join(""):`<p class="note">السلّة فاضية.</p>`}
+    <div class="sum"><div><span>المجموع</span><span class="price">${money(t.sub)}</span></div>
+    ${t.off?`<div class="ok"><span>خصم ${d.pct}%</span><span>-${money(t.off)}</span></div><div class="big"><span>المطلوب</span><span class="price">${money(t.total)}</span></div>`:d.pct&&t.n?`<div class="note">زيدي ${d.min-t.n} ${d.min-t.n===1?"قطعة":"قطع"} كمان وإلك خصم ${d.pct}%</div>`:""}
+    <div class="note">التوصيل بيتحسب حسب منطقتك.</div></div>
+    ${cart.length?`<a class="btn btn-wa" href="${waUrl(cartMsg())}" target="_blank" rel="noopener">${WA} ابعتي الطلب عالواتساب</a>`:""}
+    </div></div>`};
+  const [sh]=sheet(draw());
+  sh.addEventListener("click",e=>{const t=e.target.closest("[data-inc],[data-dec]");if(!t)return;
+    if(t.dataset.inc!=null)cart[+t.dataset.inc].q++;else{const k=+t.dataset.dec;cart[k].q--;if(cart[k].q<1)cart.splice(k,1)}
+    saveCart();sh.innerHTML=draw()});
+}
+document.addEventListener("click",e=>{if(e.target.closest("#fab")){openCart();return}
+  const t=e.target.closest("[data-cat],[data-open]");if(!t)return;
   if(t.dataset.cat){cat=t.dataset.cat;render()}else openProduct(t.dataset.open)});
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.dataset&&e.target.dataset.open)openProduct(e.target.dataset.open)});
 fetch("products.json?v="+Date.now()).then(r=>r.json()).then(d=>{S=d;S.settings=S.settings||{};S.products=S.products||[];render();if(location.hash.length>1)openProduct(location.hash.slice(1))})

@@ -83,6 +83,7 @@ function editForm(id){
     <div class="fld"><label for="f-cat">القسم</label><select id="f-cat">${CATS.map(([k,l])=>`<option value="${k}" ${d.cat===k?"selected":""}>${l}</option>`).join("")}</select></div></div>
     <div class="row2"><div class="fld"><label for="f-code">رقم المنتج</label><input id="f-code" value="${esc(d.code||"")}"></div>
     <div class="fld"><label for="f-tag">شارة صغيرة (اختياري)</label><input id="f-tag" value="${esc(d.tag||"")}" placeholder="جديد / الأكتر طلب"></div></div>
+    <div class="fld"><label for="f-colors">الألوان المتوفرة (افصلي بفاصلة، اختياري)</label><input id="f-colors" value="${esc((d.colors||[]).join("، "))}" placeholder="فضي، روز، ذهبي"></div>
     <div class="fld"><label for="f-desc">الوصف</label><textarea id="f-desc" rows="4" placeholder="المادة، القياس، اللون…">${esc(d.desc)}</textarea></div>
     <div class="actions"><button class="btn btn-acc" type="submit">احفظ</button><button class="btn btn-ghost" type="button" data-x>إلغاء</button>${p?`<button class="btn btn-danger" type="button" data-del>احذف المنتج</button>`:""}</div>
     <div class="note" id="f-msg"></div></form></div>`;
@@ -98,7 +99,7 @@ function editForm(id){
     if(t.hasAttribute("data-del")){if(t.dataset.sure){S.products=S.products.filter(x=>x.id!==d.id);sh.remove();save("انحذف المنتج")}else{t.dataset.sure=1;t.textContent="أكيد؟ كبسي كمان مرة"}}
   });
   $("form",sh).onsubmit=e=>{e.preventDefault();
-    d.name=$("#f-name",sh).value.trim();d.price=parseFloat(String($("#f-price",sh).value).replace(",","."));d.cat=$("#f-cat",sh).value;d.code=$("#f-code",sh).value.trim();d.tag=$("#f-tag",sh).value.trim();d.desc=$("#f-desc",sh).value.trim();
+    d.name=$("#f-name",sh).value.trim();d.price=parseFloat(String($("#f-price",sh).value).replace(",","."));d.cat=$("#f-cat",sh).value;d.code=$("#f-code",sh).value.trim();d.tag=$("#f-tag",sh).value.trim();d.desc=$("#f-desc",sh).value.trim();d.colors=$("#f-colors",sh).value.split(/[,،]/).map(x=>x.trim()).filter(Boolean);
     if(!d.name) return $("#f-msg",sh).textContent="اكتبي اسم المنتج.";
     if(!(d.price>=0)) return $("#f-msg",sh).textContent="اكتبي السعر بالأرقام، مثلاً 7 أو 6.5";
     if(!d.images.length) return $("#f-msg",sh).textContent="زيدي صورة وحدة عالأقل.";
@@ -113,10 +114,13 @@ function settingsForm(){
     <div class="fld"><label for="s-phone">رقم الواتساب مع مفتاح البلد</label><input id="s-phone" inputmode="tel" dir="ltr" value="${esc(S.settings.phone||"")}" placeholder="96170123456"></div>
     <div class="fld"><label for="s-name">اسم المتجر</label><input id="s-name" value="${esc(S.settings.name||"رشا")}"></div>
     <div class="fld"><label for="s-tag">جملة تحت الاسم</label><input id="s-tag" value="${esc(S.settings.tagline||"")}"></div>
+    <div class="row2"><div class="fld"><label for="s-pct">خصم الكمية %</label><input id="s-pct" inputmode="numeric" value="${esc(S.settings.bundlePct??20)}"></div>
+    <div class="fld"><label for="s-min">من كم قطعة</label><input id="s-min" inputmode="numeric" value="${esc(S.settings.bundleMin??2)}"></div></div>
+    <p class="note">حطي 0 بخانة الخصم إذا ما بدك خصم.</p>
     <div class="actions"><button class="btn btn-acc" type="submit">احفظ</button><button class="btn btn-ghost" type="button" data-x>إلغاء</button><button class="btn btn-danger" type="button" data-out>اطلعي من الإدارة</button></div></form></div>`;
   document.body.appendChild(sh);
   sh.addEventListener("click",e=>{if(e.target.hasAttribute("data-x")||e.target===sh)sh.remove();if(e.target.hasAttribute("data-out")){ls.del("rs_token");cfg.token="";sh.remove();login()}});
-  $("form",sh).onsubmit=e=>{e.preventDefault();S.settings.phone=$("#s-phone",sh).value.replace(/\D/g,"");S.settings.name=$("#s-name",sh).value.trim()||"رشا";S.settings.tagline=$("#s-tag",sh).value.trim();sh.remove();save("انحفظت الإعدادات")};
+  $("form",sh).onsubmit=e=>{e.preventDefault();S.settings.phone=$("#s-phone",sh).value.replace(/\D/g,"");S.settings.name=$("#s-name",sh).value.trim()||"رشا";S.settings.tagline=$("#s-tag",sh).value.trim();S.settings.bundlePct=Math.max(0,parseFloat($("#s-pct",sh).value)||0);S.settings.bundleMin=Math.max(2,parseInt($("#s-min",sh).value)||2);sh.remove();save("انحفظت الإعدادات")};
 }
 document.addEventListener("click",e=>{const t=e.target.closest("[data-edit],[data-sold]");if(!t)return;
   if(t.dataset.edit) editForm(t.dataset.edit);
