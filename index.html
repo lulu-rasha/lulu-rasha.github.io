@@ -51,8 +51,8 @@ function openProduct(id){
   const imgs=p.images||[], link=waLink(p);
   const sh=document.createElement("div"); sh.className="sheet"; sh.setAttribute("role","dialog"); sh.setAttribute("aria-modal","true");
   sh.innerHTML=`<div class="panel"><div class="gal"><button class="close" aria-label="سكّري">×</button>
-    <div class="track">${imgs.map((u,i)=>`<img src="${esc(u)}" alt="${esc(p.name)} ${i+1}">`).join("")}</div>
-    ${imgs.length>1?`<div class="dots">${imgs.map((_,i)=>`<i class="${i?"":"on"}"></i>`).join("")}</div><div class="thumbs">${imgs.map((u,i)=>`<button data-i="${i}" class="${i?"":"on"}" aria-label="صورة ${i+1}"><img src="${esc(u)}" alt=""></button>`).join("")}</div>`:""}</div>
+    <div style="position:relative"><div class="track">${imgs.map((u,i)=>`<img src="${esc(u)}" alt="${esc(p.name)} ${i+1}">`).join("")}</div>${imgs.length>1?`<div class="dots">${imgs.map((_,i)=>`<i class="${i?"":"on"}"></i>`).join("")}</div>`:""}</div>
+    ${imgs.length>1?`<div class="thumbs">${imgs.map((u,i)=>`<button data-i="${i}" class="${i?"":"on"}" aria-label="صورة ${i+1}"><img src="${esc(u)}" alt=""></button>`).join("")}</div>`:""}</div>
     <div class="info"><h2>${esc(p.name)}</h2><div class="price">${money(p.price)}</div>
     ${p.desc?`<p class="desc">${esc(p.desc)}</p>`:""}<div class="code">رقم المنتج: ${esc(p.code||p.id)}</div>
     ${p.soldOut?`<div class="btn btn-ghost" aria-disabled="true">نفدت الكمية</div>`:link?`<a class="btn btn-wa" href="${link}" target="_blank" rel="noopener">${WA} اطلبي عالواتساب</a><div class="note">بتنفتحلك محادثة واتساب فيها رسالة الطلب جاهزة، بس ابعتيها.</div>`:`<div class="btn btn-ghost" aria-disabled="true">${WA} رقم الواتساب لسا ما انضاف</div>`}
