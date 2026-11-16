@@ -28,6 +28,102 @@
     "روز",
     "ذهبي"
    ]
+  },
+  {
+   "id": "acc-pearl-rose",
+   "code": "102",
+   "name": "قلادة لؤلؤ مع وردة كريستال",
+   "price": 8,
+   "cat": "acc",
+   "tag": "جديد",
+   "desc": "سلسلة رفيعة بحبات لؤلؤ صغيرة، ووردة كريستال بالنص مع نقطة لؤلؤ معلّقة.\nناعمة وبتلبق عالطلعات والسهرات.",
+   "images": [
+    "images/acc-pearl-rose-1.jpg"
+   ],
+   "soldOut": false
+  },
+  {
+   "id": "acc-snow-clips",
+   "code": "103",
+   "name": "مشابك شعر تلج لمّاعة",
+   "price": 6,
+   "cat": "acc",
+   "tag": "جديد",
+   "desc": "مشابك شعر بشكل تلجة، مرصّعة كريستال لمّاع.\nبتنحط عالضفيرة أو عالشعر المفلول، حلوين كتير بالشتي والأعياد.",
+   "images": [
+    "images/acc-snow-clips-1.jpg"
+   ],
+   "soldOut": false
+  },
+  {
+   "id": "acc-butterfly-anklet",
+   "code": "104",
+   "name": "حجل فراشة كريستال",
+   "price": 7,
+   "cat": "acc",
+   "tag": "جديد",
+   "desc": "حجل كريستال لمّاع مع فراشة كبيرة بالنص.\nبيتسكّر بقفل وبيتظبط عالقياس.",
+   "images": [
+    "images/acc-butterfly-anklet-1.jpg"
+   ],
+   "soldOut": false
+  },
+  {
+   "id": "acc-choker-set",
+   "code": "105",
+   "name": "طقم طوق وحلق كريستال",
+   "price": 12,
+   "cat": "acc",
+   "tag": "جديد",
+   "desc": "طوق كريستال قريب من الرقبة، مع حلق طويل لمّاع.\nطقم كامل للأعراس والسهرات.",
+   "images": [
+    "images/acc-choker-set-1.jpg"
+   ],
+   "soldOut": false
+  },
+  {
+   "id": "acc-butterfly-necklace",
+   "code": "106",
+   "name": "قلادة فضية بتعليقة (فراشة، دائرة، كرة)",
+   "price": 8,
+   "cat": "acc",
+   "tag": "جديد",
+   "desc": "سلسلة فضية رفيعة مع تعليقة مرصّعة زركون.\nمتوفرة بـ3 أشكال: فراشة، دائرة، أو كرة. اختاري الشكل اللي بدك ياه.",
+   "images": [
+    "images/acc-butterfly-necklace-1.jpg"
+   ],
+   "soldOut": false,
+   "colors": [
+    "فراشة",
+    "دائرة",
+    "كرة"
+   ]
+  },
+  {
+   "id": "acc-layered-chains",
+   "code": "107",
+   "name": "اكستنشن سلاسل فضي (3 طبقات)",
+   "price": 10,
+   "cat": "acc",
+   "tag": "جديد",
+   "desc": "تلات سلاسل فضية بطبقات: سلسلة ناعمة، سلسلة مجدولة، وسلسلة حلقات.\nبتلبسيهن سوا أو كل وحدة لحالها.",
+   "images": [
+    "images/acc-layered-chains-1.jpg"
+   ],
+   "soldOut": false
+  },
+  {
+   "id": "acc-flower-set",
+   "code": "108",
+   "name": "طقم قلادة وحلق ورد كريستال",
+   "price": 12,
+   "cat": "acc",
+   "tag": "جديد",
+   "desc": "قلادة ورد كريستال مع تدلاية بالنص، وحلق طويل على نفس الشكل.\nطقم ناعم للأعراس والمناسبات.",
+   "images": [
+    "images/acc-flower-set-1.jpg"
+   ],
+   "soldOut": false
   }
  ]
 }
