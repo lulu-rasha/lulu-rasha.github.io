@@ -1,26 +1,25 @@
 {
- "settings": {
-  "phone": "96176479064",
-  "name": "رشا",
-  "tagline": "إكسسوارات ستانلس ومنتجات عناية أصلية",
-  "bundleMin": 2,
-  "bundlePct": 20
- },
- "products": [
-  {
-   "id": "acc-heartbeat",
-   "code": "101",
-   "name": "قلادة نبض القلب",
-   "price": 12,
-   "cat": "acc",
-   "tag": "جديد",
-   "desc": "سلسلة رفيعة دهبية مع تعليقة نبض القلب، مرصّعة بحجار زركون لمّاعة.\nناعمة ومناسبة لكل يوم، وحلوة كهدية.",
-   "images": [
-    "images/acc-heartbeat-c1.jpg",
-    "images/acc-heartbeat-c2.jpg",
-    "images/acc-heartbeat-b3.jpg"
-   ],
-   "soldOut": false
-  }
- ]
+  "settings": {
+    "phone": "96176479064",
+    "name": "رشا",
+    "tagline": "إكسسوارات ستانلس ومنتجات عناية أصلية",
+    "bundleMin": 2,
+    "bundlePct": 20
+  },
+  "products": [
+    {
+      "id": "acc-heartbeat",
+      "code": "101",
+      "name": "قلادة نبض القلب",
+      "price": 12,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "سلسلة رفيعة دهبية مع تعليقة نبض القلب، مرصّعة بحجار زركون لمّاعة.\nناعمة ومناسبة لكل يوم، وحلوة كهدية.",
+      "images": [
+        "images/acc-heartbeat-c1.jpg",
+        "images/acc-heartbeat-c2.jpg"
+      ],
+      "soldOut": false
+    }
+  ]
 }
