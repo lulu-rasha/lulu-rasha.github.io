@@ -31,7 +31,9 @@
    "tag": "جديد",
    "desc": "سلسلة فضية مع تعليقة فراشة مفرّغة مرصّعة بحجار زركون، وتحتها حجر نقطة لمّاع.\nقطعة ناعمة وفخمة، حلوة كهدية.",
    "images": [
-    "images/acc-butterfly-1.jpg"
+    "images/acc-butterfly-1.jpg",
+    "images/acc-butterfly-2.jpg",
+    "images/acc-butterfly-3.jpg"
    ],
    "soldOut": false
   },
@@ -44,7 +46,9 @@
    "tag": "جديد",
    "desc": "سلسلة رفيعة دهبية مع تعليقة ندفة تلج مرصّعة بحجار زركون لمّاعة.\nلافتة وناعمة بنفس الوقت.",
    "images": [
-    "images/acc-snowflake-1.jpg"
+    "images/acc-snowflake-1.jpg",
+    "images/acc-snowflake-2.jpg",
+    "images/acc-snowflake-3.jpg"
    ],
    "soldOut": false
   },
@@ -57,7 +61,9 @@
    "tag": "جديد",
    "desc": "سلسلة رفيعة دهبية مع تعليقة عقدة، نص منها مرصّع بحجار زركون.\nتصميم أنيق بيمشي مع كل لبسة.",
    "images": [
-    "images/acc-knot-1.jpg"
+    "images/acc-knot-1.jpg",
+    "images/acc-knot-2.jpg",
+    "images/acc-knot-3.jpg"
    ],
    "soldOut": false
   },
@@ -70,7 +76,9 @@
    "tag": "جديد",
    "desc": "سلسال دهبي بأكتر من طبقة: حلقات عريضة محفورة وحلقات لمّاعة مع سلاسل رفيعة بالنص.\nقطعة جريئة وبتعمل حضور.",
    "images": [
-    "images/acc-layered-1.jpg"
+    "images/acc-layered-1.jpg",
+    "images/acc-layered-2.jpg",
+    "images/acc-layered-3.jpg"
    ],
    "soldOut": false
   },
@@ -83,7 +91,9 @@
    "tag": "جديد",
    "desc": "سلسال كوبي دهبي بحلقات لمّاعة.\nكلاسيكي وبيمشي للبنات والشباب.",
    "images": [
-    "images/acc-cuban-1.jpg"
+    "images/acc-cuban-1.jpg",
+    "images/acc-cuban-2.jpg",
+    "images/acc-cuban-3.jpg"
    ],
    "soldOut": false
   }
