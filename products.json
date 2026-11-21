@@ -6,5 +6,20 @@
   "bundleMin": 2,
   "bundlePct": 20
  },
- "products": []
+ "products": [
+  {
+   "id": "acc-heartbeat",
+   "code": "101",
+   "name": "قلادة نبض القلب",
+   "price": 12,
+   "cat": "acc",
+   "tag": "جديد",
+   "desc": "سلسلة رفيعة دهبية مع تعليقة نبض القلب، مرصّعة بحجار زركون لمّاعة.\nناعمة ومناسبة لكل يوم، وحلوة كهدية.",
+   "images": [
+    "images/acc-heartbeat-1.jpg",
+    "images/acc-heartbeat-2.jpg"
+   ],
+   "soldOut": false
+  }
+ ]
 }
