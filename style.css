@@ -1,18 +1,18 @@
 
 /* Layout: boutique window — centered wordmark, filter chips, a calm product grid; product opens as a sheet with a swipe gallery */
 :root{
-  --bg:#F7F2F4; --surface:#FFFFFF; --ink:#2A1E26; --muted:#86727C; --line:#EADFE4;
-  --accent:#A8596D; --accent-ink:#FFFFFF; --gold:#B8925A; --wa:#1F9D55; --danger:#B4232F; --scrim:rgba(30,18,26,.55);
+  --bg:#F7F2EA; --surface:#FFFFFF; --ink:#2E241B; --muted:#857663; --line:#E9DFCF;
+  --accent:#9C7637; --accent-ink:#FFFFFF; --gold:#B08A4E; --wa:#1F9D55; --danger:#B4232F; --scrim:rgba(30,18,26,.55);
   --f-display:"El Messiri","Tajawal",system-ui,sans-serif;
   --f-body:"Tajawal",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-latin:"Cormorant Garamond",Georgia,serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#161116; --surface:#211921; --ink:#F4ECF0; --muted:#A9979F; --line:#352935;
-  --accent:#E09AAD; --accent-ink:#2A1420; --gold:#D8B67E; --wa:#35C274; --danger:#F07A84; --scrim:rgba(0,0,0,.65); color-scheme:dark}}
+  --bg:#17130E; --surface:#221C15; --ink:#F3ECE1; --muted:#AFA08A; --line:#3A3023;
+  --accent:#D9B577; --accent-ink:#241A0C; --gold:#D9B577; --wa:#35C274; --danger:#F07A84; --scrim:rgba(0,0,0,.65); color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#161116; --surface:#211921; --ink:#F4ECF0; --muted:#A9979F; --line:#352935;
-  --accent:#E09AAD; --accent-ink:#2A1420; --gold:#D8B67E; --wa:#35C274; --danger:#F07A84; --scrim:rgba(0,0,0,.65); color-scheme:dark}
+  --bg:#17130E; --surface:#221C15; --ink:#F3ECE1; --muted:#AFA08A; --line:#3A3023;
+  --accent:#D9B577; --accent-ink:#241A0C; --gold:#D9B577; --wa:#35C274; --danger:#F07A84; --scrim:rgba(0,0,0,.65); color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;direction:rtl}
 .wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -109,3 +109,7 @@ form.edit h2{font-family:var(--f-display);margin:0;font-size:24px}
 .sum{display:grid;gap:6px;padding-block:8px}.sum>div{display:flex;justify-content:space-between;gap:10px}
 .sum .ok{color:var(--wa);font-weight:700}.sum .big{font-weight:700;font-size:18px}
 .grid{padding-bottom:90px}
+
+.logo{width:min(280px,70vw);height:auto;display:block;margin:0 auto;}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .logo{mix-blend-mode:normal;border-radius:20px}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}

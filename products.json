@@ -1,101 +1,101 @@
 {
- "settings": {
-  "phone": "96176479064",
-  "name": "رشا",
-  "tagline": "إكسسوارات ستانلس ومنتجات عناية أصلية",
-  "bundleMin": 2,
-  "bundlePct": 20
- },
- "products": [
-  {
-   "id": "acc-heartbeat",
-   "code": "101",
-   "name": "قلادة نبض القلب",
-   "price": 12,
-   "cat": "acc",
-   "tag": "جديد",
-   "desc": "سلسلة رفيعة دهبية مع تعليقة نبض القلب، مرصّعة بحجار زركون لمّاعة.\nناعمة ومناسبة لكل يوم، وحلوة كهدية.",
-   "images": [
-    "images/acc-heartbeat-g1.jpg",
-    "images/acc-heartbeat-c1.jpg",
-    "images/acc-heartbeat-c2.jpg"
-   ],
-   "soldOut": false
+  "settings": {
+    "phone": "96176479064",
+    "name": "Lulu Rasha",
+    "tagline": "إكسسوارات ناعمة بلمسة فخامة",
+    "bundleMin": 2,
+    "bundlePct": 20
   },
-  {
-   "id": "acc-butterfly",
-   "code": "102",
-   "name": "قلادة الفراشة الفضية",
-   "price": 15,
-   "cat": "acc",
-   "tag": "جديد",
-   "desc": "سلسلة فضية مع تعليقة فراشة مفرّغة مرصّعة بحجار زركون، وتحتها حجر نقطة لمّاع.\nقطعة ناعمة وفخمة، حلوة كهدية.",
-   "images": [
-    "images/acc-butterfly-1.jpg",
-    "images/acc-butterfly-2.jpg",
-    "images/acc-butterfly-3.jpg"
-   ],
-   "soldOut": false
-  },
-  {
-   "id": "acc-snowflake",
-   "code": "103",
-   "name": "قلادة الندفة",
-   "price": 12,
-   "cat": "acc",
-   "tag": "جديد",
-   "desc": "سلسلة رفيعة دهبية مع تعليقة ندفة تلج مرصّعة بحجار زركون لمّاعة.\nلافتة وناعمة بنفس الوقت.",
-   "images": [
-    "images/acc-snowflake-1.jpg",
-    "images/acc-snowflake-2.jpg",
-    "images/acc-snowflake-3.jpg"
-   ],
-   "soldOut": false
-  },
-  {
-   "id": "acc-knot",
-   "code": "104",
-   "name": "قلادة العقدة",
-   "price": 14,
-   "cat": "acc",
-   "tag": "جديد",
-   "desc": "سلسلة رفيعة دهبية مع تعليقة عقدة، نص منها مرصّع بحجار زركون.\nتصميم أنيق بيمشي مع كل لبسة.",
-   "images": [
-    "images/acc-knot-1.jpg",
-    "images/acc-knot-2.jpg",
-    "images/acc-knot-3.jpg"
-   ],
-   "soldOut": false
-  },
-  {
-   "id": "acc-layered",
-   "code": "105",
-   "name": "سلسال الطبقات",
-   "price": 18,
-   "cat": "acc",
-   "tag": "جديد",
-   "desc": "سلسال دهبي بأكتر من طبقة: حلقات عريضة محفورة وحلقات لمّاعة مع سلاسل رفيعة بالنص.\nقطعة جريئة وبتعمل حضور.",
-   "images": [
-    "images/acc-layered-1.jpg",
-    "images/acc-layered-2.jpg",
-    "images/acc-layered-3.jpg"
-   ],
-   "soldOut": false
-  },
-  {
-   "id": "acc-cuban",
-   "code": "106",
-   "name": "سلسال كوبي",
-   "price": 15,
-   "cat": "acc",
-   "tag": "جديد",
-   "desc": "سلسال كوبي دهبي بحلقات لمّاعة.\nكلاسيكي وبيمشي للبنات والشباب.",
-   "images": [
-    "images/acc-cuban-1.jpg",
-    "images/acc-cuban-2.jpg",
-    "images/acc-cuban-3.jpg"
-   ],
-   "soldOut": false
-  }
- ]
+  "products": [
+    {
+      "id": "acc-heartbeat",
+      "code": "101",
+      "name": "قلادة نبض القلب",
+      "price": 12,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "سلسلة رفيعة دهبية مع تعليقة نبض القلب، مرصّعة بحجار زركون لمّاعة.\nناعمة ومناسبة لكل يوم، وحلوة كهدية.",
+      "images": [
+        "images/acc-heartbeat-g1.jpg",
+        "images/acc-heartbeat-c1.jpg",
+        "images/acc-heartbeat-c2.jpg"
+      ],
+      "soldOut": false
+    },
+    {
+      "id": "acc-butterfly",
+      "code": "102",
+      "name": "قلادة الفراشة الفضية",
+      "price": 15,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "سلسلة فضية مع تعليقة فراشة مفرّغة مرصّعة بحجار زركون، وتحتها حجر نقطة لمّاع.\nقطعة ناعمة وفخمة، حلوة كهدية.",
+      "images": [
+        "images/acc-butterfly-1.jpg",
+        "images/acc-butterfly-2.jpg",
+        "images/acc-butterfly-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
+      "id": "acc-snowflake",
+      "code": "103",
+      "name": "قلادة الندفة",
+      "price": 12,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "سلسلة رفيعة دهبية مع تعليقة ندفة تلج مرصّعة بحجار زركون لمّاعة.\nلافتة وناعمة بنفس الوقت.",
+      "images": [
+        "images/acc-snowflake-1.jpg",
+        "images/acc-snowflake-2.jpg",
+        "images/acc-snowflake-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
+      "id": "acc-knot",
+      "code": "104",
+      "name": "قلادة العقدة",
+      "price": 14,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "سلسلة رفيعة دهبية مع تعليقة عقدة، نص منها مرصّع بحجار زركون.\nتصميم أنيق بيمشي مع كل لبسة.",
+      "images": [
+        "images/acc-knot-1.jpg",
+        "images/acc-knot-2.jpg",
+        "images/acc-knot-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
+      "id": "acc-layered",
+      "code": "105",
+      "name": "سلسال الطبقات",
+      "price": 18,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "سلسال دهبي بأكتر من طبقة: حلقات عريضة محفورة وحلقات لمّاعة مع سلاسل رفيعة بالنص.\nقطعة جريئة وبتعمل حضور.",
+      "images": [
+        "images/acc-layered-1.jpg",
+        "images/acc-layered-2.jpg",
+        "images/acc-layered-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
+      "id": "acc-cuban",
+      "code": "106",
+      "name": "سلسال كوبي",
+      "price": 15,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "سلسال كوبي دهبي بحلقات لمّاعة.\nكلاسيكي وبيمشي للبنات والشباب.",
+      "images": [
+        "images/acc-cuban-1.jpg",
+        "images/acc-cuban-2.jpg",
+        "images/acc-cuban-3.jpg"
+      ],
+      "soldOut": false
+    }
+  ]
 }
