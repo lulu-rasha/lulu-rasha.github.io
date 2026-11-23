@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "set-square",
+      "code": "110",
+      "name": "طقم المربع الملكي",
+      "price": 12,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "طقم دهبي: سلسال مع تعليقة مربعة بحواف مجدولة، مرصّعة بحجار صغيرة لمّاعة، وحلق مطابق.\nبيلبق لكل يوم وللمناسبات المميزة، وأحلى هدية.",
+      "images": [
+        "images/set-square-1.jpg",
+        "images/set-square-2.jpg",
+        "images/set-square-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "set-jelan",
       "code": "109",
       "name": "طقم جيلان",
