@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "set-pearl-ring",
+      "code": "116",
+      "name": "طقم اللؤلؤ والكريستال",
+      "price": 15,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "طقم دهبي: سلسال مع تعليقة دائرية بحجر كريستال كبير محاوط بحجار زركون، وخاتم فيه صف لؤلؤ وتحته حجار مستطيلة لمّاعة.\nناعم وراقي، بيلبق لكل يوم وللمناسبات.",
+      "images": [
+        "images/set-pearl-ring-1.jpg",
+        "images/set-pearl-ring-2.jpg",
+        "images/set-pearl-ring-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "set-sparkle",
       "code": "115",
       "name": "طقم البريق",
