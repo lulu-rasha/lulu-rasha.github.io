@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "set-emerald",
+      "code": "111",
+      "name": "طقم الزمرّد",
+      "price": 15,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "طقم دهبي: سلسال مع تعليقة على شكل وردة من حجار خضرا، بنصّها حجر أبيض لمّاع ومحاوطة بحجار زركون، وخاتم بحجار خضرا مطابقة.\nفخم ولافت، وبيلبق للسهرات والمناسبات.",
+      "images": [
+        "images/set-emerald-1.jpg",
+        "images/set-emerald-2.jpg",
+        "images/set-emerald-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "set-square",
       "code": "110",
       "name": "طقم المربع الملكي",
