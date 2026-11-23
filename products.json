@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "acc-secret-heart",
+      "code": "117",
+      "name": "سلسال القلب السرّي للتنين",
+      "price": 15,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "سلسالين: قلب أسود على خيط فيه عدسة صغيرة، لما تضوّي عليها بتبيّن كتابة مخفية، وقلب فضّي مزخرف على سلسلة.\nواحد إلك وواحد لحبيبك أو لأعز صاحبة.",
+      "images": [
+        "images/acc-secret-heart-1.jpg",
+        "images/acc-secret-heart-2.jpg",
+        "images/acc-secret-heart-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "set-pearl-ring",
       "code": "116",
       "name": "طقم اللؤلؤ والكريستال",
