@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "set-clover",
+      "code": "114",
+      "name": "طقم الوردة البيضا",
+      "price": 15,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "طقم دهبي: سلسال مع تعليقتين، وردة بأربع ورقات بيضا محاوطة بحجار زركون، ونقطة كريستال لمّاعة، وخاتم مرصّع بحجار.\nناعم وراقي، بيلبق لكل يوم وللمناسبات.",
+      "images": [
+        "images/set-clover-1.jpg",
+        "images/set-clover-2.jpg",
+        "images/set-clover-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "acc-couple-heart",
       "code": "113",
       "name": "سلسال القلب للتنين",
