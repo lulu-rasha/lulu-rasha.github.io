@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "acc-angel",
+      "code": "107",
+      "name": "سلسال Angel",
+      "price": 18,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "سلسال ناعم دهبي، مع تعليقة على شكل إنفينيتي وكلمة Angel، مرصّعة بحجار صغيرة لمّاعة.\nبيلبق لكل يوم وللمناسبات، وحلو كهدية.",
+      "images": [
+        "images/acc-angel-1.jpg",
+        "images/acc-angel-2.jpg",
+        "images/acc-angel-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "acc-heartbeat",
       "code": "101",
       "name": "قلادة نبض القلب",
