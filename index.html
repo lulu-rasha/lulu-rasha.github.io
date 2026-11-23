@@ -107,7 +107,7 @@ document.addEventListener("click",e=>{if(e.target.closest("#fab")){openCart();re
   const t=e.target.closest("[data-cat],[data-open]");if(!t)return;
   if(t.dataset.cat){cat=t.dataset.cat;render()}else openProduct(t.dataset.open)});
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.dataset&&e.target.dataset.open)openProduct(e.target.dataset.open)});
-fetch("products.json?v="+Date.now()).then(r=>r.json()).then(d=>{S=d;S.settings=S.settings||{};S.products=S.products||[];render();if(location.hash.length>1)openProduct(location.hash.slice(1))})
+fetch("products.json?v="+Date.now()).then(r=>r.json()).then(d=>{S=d;S.settings=S.settings||{};S.products=S.products||[];render();const q=new URLSearchParams(location.search).get('p');if(q)openProduct(q);else if(location.hash.length>1)openProduct(location.hash.slice(1))})
  .catch(()=>{$(".tagline").textContent="ما قدرنا نحمّل المنتجات، حدّثي الصفحة."});
 })();
 </script>
