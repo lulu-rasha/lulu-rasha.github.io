@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "set-jelan",
+      "code": "109",
+      "name": "طقم جيلان",
+      "price": 12,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "طقم كامل دهبي: سلسال مع تعليقة دائرية مزدوجة مرصّعة بحجار لمّاعة، وحلق وخاتم بيلبقوا لبعض.\nبيعطيكِ طلّة راقية بكل مناسباتك، وأحلى هدية كاملة.",
+      "images": [
+        "images/set-jelan-1.jpg",
+        "images/set-jelan-2.jpg",
+        "images/set-jelan-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "acc-butterfly-hearts",
       "code": "108",
       "name": "سلسال الفراشة والقلوب",
