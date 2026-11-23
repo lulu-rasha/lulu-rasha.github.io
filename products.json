@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "acc-butterfly-hearts",
+      "code": "108",
+      "name": "سلسال الفراشة والقلوب",
+      "price": 12,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "سلسال بطبقتين دهبي: الأولى ناعمة مع تعليقة فراشة مرصّعة بحجار لمّاعة، والتانية فيها قلوب صغيرة معلّقة.\nبيلبق لكل يوم وللسهرات، وبيعطي لمسة أنثوية مميزة.",
+      "images": [
+        "images/acc-butterfly-hearts-1.jpg",
+        "images/acc-butterfly-hearts-2.jpg",
+        "images/acc-butterfly-hearts-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "acc-angel",
       "code": "107",
       "name": "سلسال Angel",
