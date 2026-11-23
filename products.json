@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "set-sparkle",
+      "code": "115",
+      "name": "طقم البريق",
+      "price": 15,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "طقم دهبي: سلسال مع تعليقة وردة من حجار زركون لمّاعة بنصّها حجر كبير، وخاتم كبير مرصّع بحجار مطابقة.\nفخم ولافت، بيلبق للسهرات والأعراس.",
+      "images": [
+        "images/set-sparkle-1.jpg",
+        "images/set-sparkle-2.jpg",
+        "images/set-sparkle-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "set-clover",
       "code": "114",
       "name": "طقم الوردة البيضا",
