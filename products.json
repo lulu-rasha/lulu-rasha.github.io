@@ -8,6 +8,20 @@
   },
   "products": [
     {
+      "id": "acc-crystal-flower",
+      "code": "112",
+      "name": "قلادة الوردة الكريستال",
+      "price": 15,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "سلسال دهبي مع تعليقة وردة كبيرة من حجار زركون لمّاعة، بنصّها حجر كبير بيبرق، ومعلّقة بدائرة مرصّعة.\nقطعة فخمة ولافتة، بتلبق للسهرات والأعراس.",
+      "images": [
+        "images/acc-crystal-flower-1.jpg",
+        "images/acc-crystal-flower-2.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "set-emerald",
       "code": "111",
       "name": "طقم الزمرّد",
