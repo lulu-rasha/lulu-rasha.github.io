@@ -259,6 +259,21 @@
         "images/acc-cuban-3.jpg"
       ],
       "soldOut": false
+    },
+    {
+      "id": "acc-beads",
+      "code": "118",
+      "name": "سلسال الحبّات",
+      "price": 12,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "سلسلة رفيعة دهبية مع حبّات لمّاعة موزّعة كل تلات سوا.\nناعم وبسيط، بيمشي يومي وبالسهرات.",
+      "images": [
+        "images/acc-beads-1.jpg",
+        "images/acc-beads-2.jpg",
+        "images/acc-beads-3.jpg"
+      ],
+      "soldOut": false
     }
   ]
 }
