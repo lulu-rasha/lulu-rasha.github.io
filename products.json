@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "set-butterfly-gold",
+      "code": "120",
+      "name": "طقم الفراشة الدهبي",
+      "price": 18,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "طقم دهبي من 4 قطع: سلسال وحلق وأسوارة وخاتم، كلّن على شكل فراشة محفورة بنقشة ناعمة.\nطقم كامل بيلبق لبعضه، وأحلى هدية.",
+      "images": [
+        "images/set-butterfly-gold-1.jpg",
+        "images/set-butterfly-gold-2.jpg",
+        "images/set-butterfly-gold-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "acc-leaves",
       "code": "119",
       "name": "قلادة غصن الورق",
