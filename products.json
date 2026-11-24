@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "acc-leaves",
+      "code": "119",
+      "name": "قلادة غصن الورق",
+      "price": 12,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "سلسلة رفيعة دهبية مع غصن ناعم، ورقاته حجار زركون لمّاعة.\nبسيطة وراقية، بتلبق لكل يوم وحلوة كهدية.",
+      "images": [
+        "images/acc-leaves-1.jpg",
+        "images/acc-leaves-2.jpg",
+        "images/acc-leaves-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "acc-secret-heart",
       "code": "117",
       "name": "سلسال القلب السرّي للتنين",
