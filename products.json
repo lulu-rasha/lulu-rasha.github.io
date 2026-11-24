@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "ring-gold-beads",
+      "code": "122",
+      "name": "خاتم حبيبات الذهب",
+      "price": 12,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "خاتم دهبي بتصميم مميز مليان تفاصيل وحجار صغيرة لمّاعة.\nقطعة أنيقة بتلبق لكل يوم، وبتعطي إطلالتك لمسة فخامة.",
+      "images": [
+        "images/ring-gold-beads-1.jpg",
+        "images/ring-gold-beads-2.jpg",
+        "images/ring-gold-beads-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "rings-silver",
       "code": "121",
       "name": "طقم الخواتم الفضية",
