@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "rings-silver",
+      "code": "121",
+      "name": "طقم الخواتم الفضية",
+      "price": 15,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "4 خواتم فضية مرصّعة بحجار زركون لمّاعة: خاتم النجمة، خاتم الحجار المستطيلة، الخاتم الملفوف، وخاتم الفراشتين.\nفيكِ تلبسيهن سوا أو كل واحد لحالو.",
+      "images": [
+        "images/rings-silver-1.jpg",
+        "images/rings-silver-2.jpg",
+        "images/rings-silver-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "set-butterfly-gold",
       "code": "120",
       "name": "طقم الفراشة الدهبي",
