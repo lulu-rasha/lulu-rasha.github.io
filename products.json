@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "ring-horseshoe",
+      "code": "124",
+      "name": "خاتم المشبك الدهبي المرصّع",
+      "price": 10,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "خاتم دهبي بنصّه مشبك على شكل حدوة مرصّع بحجار زركون لمّاعة، وعلى طرفيه لمسة بيضا.\nتصميم عصري ولافت، بيلبق لكل يوم.",
+      "images": [
+        "images/ring-horseshoe-1.jpg",
+        "images/ring-horseshoe-2.jpg",
+        "images/ring-horseshoe-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "pave-circle-ring",
       "code": "123",
       "name": "خاتم الحلقة المرصّعة",
@@ -25,11 +40,11 @@
     {
       "id": "ring-gold-beads",
       "code": "122",
-      "name": "خاتم المشبك الدهبي",
+      "name": "خاتم حبيبات الذهب",
       "price": 10,
       "cat": "acc",
       "tag": "جديد",
-      "desc": "خاتم دهبي بسلسلة مجدولة، وبنصّه مشبك مرصّع بحجار زركون لمّاعة.\nتصميم مميز وعصري، بيلبق لكل يوم.",
+      "desc": "خاتم دهبي بتصميم مميز مليان تفاصيل وحجار صغيرة لمّاعة.\nقطعة أنيقة بتلبق لكل يوم، وبتعطي إطلالتك لمسة فخامة.",
       "images": [
         "images/ring-gold-beads-1.jpg",
         "images/ring-gold-beads-2.jpg",
