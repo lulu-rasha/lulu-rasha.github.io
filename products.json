@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "ring-nail",
+      "code": "125",
+      "name": "خاتم المسمار المرصّع",
+      "price": 12,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "خاتم دهبي عريض ملفوف على شكل مسمار، مرصّع كلّه بحجار زركون لمّاعة.\nقطعة جريئة وفخمة، بتعمل حضور بكل طلّة.",
+      "images": [
+        "images/ring-nail-1.jpg",
+        "images/ring-nail-2.jpg",
+        "images/ring-nail-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "ring-horseshoe",
       "code": "124",
       "name": "خاتم المشبك الدهبي المرصّع",
