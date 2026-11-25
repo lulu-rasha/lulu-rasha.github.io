@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "set-pave-spheres",
+      "code": "128",
+      "name": "طقم الأسوارة والخاتم بالكرات المرصّعة",
+      "price": 12,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "أسوارة دهبية وخاتم مطابق بتصميم عصري: كرات دهبية ناعمة وكرات مرصّعة بحجار زركون لمّاعة.\nأنيق ومميّز، بيلبق لكل يوم وللمناسبات.",
+      "images": [
+        "images/set-pave-spheres-1.jpg",
+        "images/set-pave-spheres-2.jpg",
+        "images/set-pave-spheres-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "set-cuban-cuff",
       "code": "127",
       "name": "طقم الأسوارة والخاتم الكوبي",
