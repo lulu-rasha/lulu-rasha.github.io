@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "set-cuban-cuff",
+      "code": "127",
+      "name": "طقم الأسوارة والخاتم الكوبي",
+      "price": 12,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "أسوارة دهبية مفتوحة وخاتم مطابق، عليهن نقشة سلسلة كوبية لمّاعة.\nستايل عصري وناعم، بيلبق لكل يوم.",
+      "images": [
+        "images/set-cuban-cuff-1.jpg",
+        "images/set-cuban-cuff-2.jpg",
+        "images/set-cuban-cuff-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "ring-links",
       "code": "126",
       "name": "خاتم الحلقتين المتشابكين",
