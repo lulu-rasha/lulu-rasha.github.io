@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "ring-links",
+      "code": "126",
+      "name": "خاتم الحلقتين المتشابكين",
+      "price": 12,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "خاتم دهبي عريض بحلقتين متشابكين، وحدة لمّاعة ووحدة مرصّعة بحجار زركون.\nفخم وجريء، بيلبق للسهرات والمناسبات.",
+      "images": [
+        "images/ring-links-1.jpg",
+        "images/ring-links-2.jpg",
+        "images/ring-links-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "ring-nail",
       "code": "125",
       "name": "خاتم المسمار المرصّع",
