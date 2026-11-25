@@ -8,6 +8,21 @@
   },
   "products": [
     {
+      "id": "pave-circle-ring",
+      "code": "123",
+      "name": "خاتم الحلقة المرصّعة",
+      "price": 12,
+      "cat": "acc",
+      "tag": "جديد",
+      "desc": "خاتم دهبي بتصميم حلقة دائرية مرصّعة بحجار صغيرة لمّاعة، مع تفاصيل ناعمة ومرتّبة.\nبيلبق للإطلالات اليومية وللمناسبات الحلوة.",
+      "images": [
+        "images/pave-circle-ring-1.jpg",
+        "images/pave-circle-ring-2.jpg",
+        "images/pave-circle-ring-3.jpg"
+      ],
+      "soldOut": false
+    },
+    {
       "id": "ring-gold-beads",
       "code": "122",
       "name": "خاتم حبيبات الذهب",
