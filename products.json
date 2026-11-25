@@ -23,21 +23,6 @@
       "soldOut": false
     },
     {
-      "id": "bangle-wide-pave",
-      "code": "130",
-      "name": "الأسوارة العريضة المرصّعة",
-      "price": 15,
-      "cat": "acc",
-      "tag": "جديد",
-      "desc": "أسوارة دهبية عريضة بنقشة مجدولة، وصفوف حجار زركون لمّاعة.\nقطعة فخمة بتعمل حضور، للسهرات والأعراس.",
-      "images": [
-        "images/bangle-wide-pave-1.jpg",
-        "images/bangle-wide-pave-2.jpg",
-        "images/bangle-wide-pave-3.jpg"
-      ],
-      "soldOut": false
-    },
-    {
       "id": "set-twisted-cuff",
       "code": "129",
       "name": "طقم الأسوارة والخاتم المبروم",
