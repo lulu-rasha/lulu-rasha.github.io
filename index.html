@@ -39,14 +39,16 @@ function cartMsg(){const t=totals();let m="مرحبا رشا 🌸\nبدي اطل
   cart.forEach(i=>{const p=pById(i.id);m+=`• ${p.name}${i.c?` (${i.c})`:""} × ${i.q} = ${money(p.price*i.q)}\n`});
   m+=`\nالمجموع: ${money(t.sub)}`;if(t.off)m+=`\nخصم ${deal().pct}%: -${money(t.off)}\nالمطلوب: ${money(t.total)}`;
   return m+"\n\nممكن تفاصيل التوصيل؟"}
+let FOCUS=null;
 function render(){
-  const list=S.products.filter(p=>cat==="all"||p.cat===cat), n=phone(), d=deal();
+  const fp=FOCUS&&S.products.find(p=>p.id===FOCUS);
+  const list=fp?[fp]:S.products.filter(p=>cat==="all"||p.cat===cat), n=phone(), d=deal();
   $("#root").innerHTML=`<div class="wrap">
     <header class="top"><h1 class="sr">${esc(S.settings.name||"Lulu Rasha")}</h1><img class="logo" src="images/logo-head.png" alt="Lulu Rasha">
       <p class="tagline">${esc(S.settings.tagline||"")}</p>
       <div class="facts"><span>توصيل لكل لبنان</span><span>الدفع عند الاستلام</span><span>${n?`واتساب <span class="num">+${esc(n)}</span>`:"الطلب عالواتساب"}</span></div>
       ${d.pct?`<div class="deal">خدي ${d.min===2?"قطعتين":d.min+" قطع"} أو أكتر، وإلك خصم ${d.pct}% عالطلب كلّه</div>`:""}</header>
-    <nav class="chips" aria-label="الأقسام">${CATS.map(([k,l])=>`<button class="chip" data-cat="${k}" aria-pressed="${cat===k}">${l}</button>`).join("")}</nav>
+    ${fp?`<div style="text-align:center;margin:6px 0 14px"><button class="chip" id="showAll" aria-pressed="true">شوفي كل القطع ←</button></div>`:`<nav class="chips" aria-label="الأقسام">${CATS.map(([k,l])=>`<button class="chip" data-cat="${k}" aria-pressed="${cat===k}">${l}</button>`).join("")}</nav>`}
     <section class="grid">${list.length?list.map(card).join(""):`<div class="empty">قريباً منتجات جديدة بهالقسم 🌸</div>`}</section></div>
     <footer><div class="wrap"><div>للطلب والاستفسار ${n?`عالواتساب: <span class="num">+${esc(n)}</span>`:"عالواتساب"}</div><div>اختاري القطع اللي بدك ياهن، وبتوصلك رسالة الطلب جاهزة</div></div></footer>
     <button class="fab" id="fab" hidden aria-label="السلّة">${BAG}<span id="fabn"></span></button>`;
@@ -103,11 +105,11 @@ function openCart(){
     if(t.dataset.inc!=null)cart[+t.dataset.inc].q++;else{const k=+t.dataset.dec;cart[k].q--;if(cart[k].q<1)cart.splice(k,1)}
     saveCart();sh.innerHTML=draw()});
 }
-document.addEventListener("click",e=>{if(e.target.closest("#fab")){openCart();return}
+document.addEventListener("click",e=>{if(e.target.closest("#showAll")){FOCUS=null;history.replaceState(null,"",location.pathname);render();return}if(e.target.closest("#fab")){openCart();return}
   const t=e.target.closest("[data-cat],[data-open]");if(!t)return;
   if(t.dataset.cat){cat=t.dataset.cat;render()}else openProduct(t.dataset.open)});
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.dataset&&e.target.dataset.open)openProduct(e.target.dataset.open)});
-fetch("products.json?v="+Date.now()).then(r=>r.json()).then(d=>{S=d;S.settings=S.settings||{};S.products=S.products||[];render();const q=new URLSearchParams(location.search).get('p');if(q)openProduct(q);else if(location.hash.length>1)openProduct(location.hash.slice(1))})
+fetch("products.json?v="+Date.now()).then(r=>r.json()).then(d=>{S=d;S.settings=S.settings||{};S.products=S.products||[];const q=new URLSearchParams(location.search).get('p')||(location.hash.length>1?decodeURIComponent(location.hash.slice(1)):null);if(q&&S.products.some(p=>p.id===q))FOCUS=q;render();if(FOCUS)openProduct(FOCUS)})
  .catch(()=>{$(".tagline").textContent="ما قدرنا نحمّل المنتجات، حدّثي الصفحة."});
 })();
 </script>
